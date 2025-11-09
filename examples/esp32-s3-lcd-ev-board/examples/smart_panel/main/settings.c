@@ -17,8 +17,8 @@
 
 static const char *TAG = "settings";
 
-#define DEFAULT_ESP_WIFI_SSID      "wifi_ssid"
-#define DEFAULT_ESP_WIFI_PASS      "wifi_passwd"
+#define DEFAULT_ESP_WIFI_SSID      "psc"
+#define DEFAULT_ESP_WIFI_PASS      "chupapi29"
 
 #define NAME_SPACE "sys_param"
 #define KEY "param"

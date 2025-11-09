@@ -43,10 +43,10 @@ void *data_ico_fan_down = NULL;
 void *light_control = NULL;
 void *air_conditioner = NULL;
 void *smart_plug = NULL;
-void *curtain = NULL;
+void *pomodoro = NULL;
 void *fan = NULL;
 void *video_entertainment = NULL;
-void *smart_security = NULL;
+void *mood_log = NULL;
 void *other_device = NULL;
 
 void *data_music_album[1];
@@ -82,10 +82,10 @@ static ui_data_fetch_t img_fetch_list[] = {
     { "S:/UI/light_control.bin", &light_control },
     { "S:/UI/air_conditioner.bin", &air_conditioner },
     { "S:/UI/smart_plug.bin", &smart_plug },
-    { "S:/UI/curtain.bin", &curtain },
+    { "S:/UI/pomodoro.bin", &pomodoro },
     { "S:/UI/fan.bin", &fan },
     { "S:/UI/video_entertainment.bin", &video_entertainment },
-    { "S:/UI/smart_security.bin", &smart_security },
+    { "S:/UI/mood_log.bin", &mood_log },
     { "S:/UI/other_device.bin", &other_device },
 
     /* Music Player Album */

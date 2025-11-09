@@ -16,11 +16,15 @@ static lv_obj_t *btn_battery = NULL;
 static lv_obj_t *btn_little_time = NULL;
 static lv_obj_t *btn_home = NULL;
 static lv_obj_t *btn_switch = NULL;
-static lv_obj_t *btn_music = NULL;
+//static lv_obj_t *btn_music = NULL;
+static lv_obj_t *btn_pomodoro = NULL;
+static lv_obj_t *msgbox = NULL;
 
 /* Static function forward declaration */
 static void btn_cb(lv_obj_t *obj, lv_event_t event);
 static void ui_status_bar_update_battery(lv_task_t *task);
+static void show_msg(const char *text);
+
 
 void ui_status_bar_init(void)
 {
@@ -105,19 +109,32 @@ void ui_status_bar_init(void)
     lv_obj_align(btn_switch, btn_home, LV_ALIGN_OUT_RIGHT_MID, 20, 0);
     lv_obj_set_event_cb(btn_switch, btn_cb);
 
-    btn_music = lv_btn_create(status_bar, NULL);
-    lv_obj_set_width(btn_music, 50);
-    lv_obj_set_style_local_outline_width(btn_music, LV_BTN_PART_MAIN, LV_STATE_DEFAULT, 0);
-    lv_obj_set_style_local_radius(btn_music, LV_BTN_PART_MAIN, LV_STATE_DEFAULT, 25);
-    lv_obj_set_style_local_bg_color(btn_music, LV_BTN_PART_MAIN, LV_STATE_DEFAULT, COLOR_BAR);
-    lv_obj_set_style_local_border_color(btn_music, LV_BTN_PART_MAIN, LV_STATE_DEFAULT, COLOR_BAR);
-    lv_obj_set_style_local_value_font(btn_music, LV_BTN_PART_MAIN, LV_STATE_DEFAULT, &font_bar_symbol);
-    lv_obj_set_style_local_value_color(btn_music, LV_BTN_PART_MAIN, LV_STATE_DEFAULT, lv_color_hex(0xd9e1f9));
-    lv_obj_set_style_local_value_str(btn_music, LV_BTN_PART_MAIN, LV_STATE_DEFAULT, LV_SYMBOL_EXTRA_MUSIC);
-    lv_obj_set_style_local_value_str(btn_music, LV_BTN_PART_MAIN, LV_STATE_PRESSED, LV_SYMBOL_EXTRA_MUSIC_SOLID);
+    //btn_music = lv_btn_create(status_bar, NULL);
+    //lv_obj_set_width(btn_music, 50);
+    //lv_obj_set_style_local_outline_width(btn_music, LV_BTN_PART_MAIN, LV_STATE_DEFAULT, 0);
+    //lv_obj_set_style_local_radius(btn_music, LV_BTN_PART_MAIN, LV_STATE_DEFAULT, 25);
+    //lv_obj_set_style_local_bg_color(btn_music, LV_BTN_PART_MAIN, LV_STATE_DEFAULT, COLOR_BAR);
+    //lv_obj_set_style_local_border_color(btn_music, LV_BTN_PART_MAIN, LV_STATE_DEFAULT, COLOR_BAR);
+    //lv_obj_set_style_local_value_font(btn_music, LV_BTN_PART_MAIN, LV_STATE_DEFAULT, &font_bar_symbol);
+    //lv_obj_set_style_local_value_color(btn_music, LV_BTN_PART_MAIN, LV_STATE_DEFAULT, lv_color_hex(0xd9e1f9));
+    //lv_obj_set_style_local_value_str(btn_music, LV_BTN_PART_MAIN, LV_STATE_DEFAULT, LV_SYMBOL_EXTRA_MUSIC);
+    //lv_obj_set_style_local_value_str(btn_music, LV_BTN_PART_MAIN, LV_STATE_PRESSED, LV_SYMBOL_EXTRA_MUSIC_SOLID);
+    //lv_obj_align(btn_music, btn_switch, LV_ALIGN_OUT_RIGHT_MID, 20, 0);
+    //lv_obj_set_event_cb(btn_music, btn_cb);
 
-    lv_obj_align(btn_music, btn_switch, LV_ALIGN_OUT_RIGHT_MID, 20, 0);
-    lv_obj_set_event_cb(btn_music, btn_cb);
+    btn_pomodoro = lv_btn_create(status_bar, NULL);
+    lv_obj_set_width(btn_pomodoro, 50);
+    lv_obj_set_style_local_outline_width(btn_pomodoro, LV_BTN_PART_MAIN, LV_STATE_DEFAULT, 0);
+    lv_obj_set_style_local_radius(btn_pomodoro, LV_BTN_PART_MAIN, LV_STATE_DEFAULT, 25);
+    lv_obj_set_style_local_bg_color(btn_pomodoro, LV_BTN_PART_MAIN, LV_STATE_DEFAULT, COLOR_BAR);
+    lv_obj_set_style_local_border_color(btn_pomodoro, LV_BTN_PART_MAIN, LV_STATE_DEFAULT, COLOR_BAR);
+    lv_obj_set_style_local_value_font(btn_pomodoro, LV_BTN_PART_MAIN, LV_STATE_DEFAULT, &font_bar_symbol);
+    lv_obj_set_style_local_value_color(btn_pomodoro, LV_BTN_PART_MAIN, LV_STATE_DEFAULT, lv_color_hex(0xd9e1f9));
+    lv_obj_set_style_local_value_str(btn_pomodoro, LV_BTN_PART_MAIN, LV_STATE_DEFAULT, LV_SYMBOL_EXTRA_HOURGLASS_HALF);
+    lv_obj_set_style_local_value_str(btn_pomodoro, LV_BTN_PART_MAIN, LV_STATE_PRESSED, LV_SYMBOL_EXTRA_HOURGLASS_HALF_SOLID);
+    lv_obj_align(btn_pomodoro, btn_switch, LV_ALIGN_OUT_RIGHT_MID, 20, 0);
+    lv_obj_set_event_cb(btn_pomodoro, btn_cb);
+
     lv_task_create(ui_status_bar_update_battery, 100, 1, NULL);
 
     lv_obj_set_hidden(status_bar, false);
@@ -151,8 +168,13 @@ static void btn_cb(lv_obj_t *obj, lv_event_t event)
             return;
         }
 
-        if (btn_music == obj) {
-            ui_show(&ui_music_func, UI_SHOW_OVERRIDE);
+        //if (btn_music == obj) {
+        //    ui_show(&ui_music_func, UI_SHOW_OVERRIDE);
+        //    return;
+        //}
+
+        if (btn_pomodoro == obj) {
+            show_msg("Pomodoro Timer\nFunction Coming Soon!");
             return;
         }
 
@@ -226,5 +248,32 @@ static void ui_status_bar_update_battery(lv_task_t *task)
 
         voltage_count = 0;
         voltage_avr = 0;
+    }
+}
+
+/*Debugging Message*/
+static void msgbox_cb(lv_obj_t *obj, lv_event_t event)
+{
+    if (LV_EVENT_CLICKED == event) {
+        lv_obj_set_hidden(obj, true);
+    }
+}
+
+static void show_msg(const char *text)
+{
+    static const char *btns[] = { "OK", ""};
+    if (NULL == msgbox) {
+        msgbox = lv_msgbox_create(lv_scr_act(), NULL);
+        lv_msgbox_set_text(msgbox, text);
+        lv_msgbox_add_btns(msgbox, btns);
+        lv_obj_set_style_local_text_font(msgbox, LV_MSGBOX_PART_BG, LV_STATE_DEFAULT, &font_en_24);
+        lv_obj_set_style_local_text_font(msgbox, LV_MSGBOX_PART_BTN, LV_STATE_DEFAULT, &font_en_24);
+
+        lv_obj_align(msgbox, NULL, LV_ALIGN_CENTER, 0, 0);
+
+        lv_obj_set_event_cb(msgbox, msgbox_cb);
+    } else {
+        lv_msgbox_set_text(msgbox, text);
+        lv_obj_set_hidden(msgbox, false);
     }
 }

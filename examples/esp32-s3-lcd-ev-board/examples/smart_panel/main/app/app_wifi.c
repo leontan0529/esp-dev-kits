@@ -198,7 +198,8 @@ static void wifi_init_sta(void)
                     NULL,
                     &instance_got_ip));
 
-    wifi_config_t wifi_config;
+    wifi_config_t wifi_config = { 0 };
+    wifi_config.sta.threshold.authmode = WIFI_AUTH_WPA2_PSK;
 
     sys_param_t *sys_param = settings_get_parameter();
     memcpy(wifi_config.sta.ssid, sys_param->ssid, sizeof(wifi_config.sta.ssid));

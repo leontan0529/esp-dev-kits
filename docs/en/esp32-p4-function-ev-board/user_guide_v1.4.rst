@@ -6,6 +6,12 @@ ESP32-P4-Function-EV-Board v1.4
 
 New version available: :doc:`user_guide`
 
+.. note::
+
+    If you are using ESP32-P4X-Function-EV-Board with chip revision v3.x, please refer to this :doc:`user guide <../esp32-p4x-function-ev-board/user_guide>`.
+
+    The version number v1.4 refers to the board hardware version. To identify the embedded chip revision, refer to `ESP32-P4 Series SoC Errata`_ > `Chip Revision Identification`_.
+
 This user guide will help you get started with ESP32-P4-Function-EV-Board and will also provide more in-depth information.
 
 ESP32-P4-Function-EV-Board is a multimedia development board based on the ESP32-P4 chip. ESP32-P4 chip features a dual-core RISC-V processor and supports up to 32 MB PSRAM. In addition, ESP32-P4 supports USB 2.0 specification, MIPI-CSI/DSI, H264 Encoder, and various other peripherals. With all of its outstanding features, the board is an ideal choice for developing low-cost, high-performance, low-power network-connected audio and video products.
@@ -63,7 +69,7 @@ The key components of the board are described in a clockwise direction.
    * - Key Component
      - Description
    * - J1
-     - All available GPIO pins are broken out to the header block J1 for easy interfacing. For more details, see :ref:`header-block`.
+     - All available GPIO pins are broken out to the header block J1 for easy interfacing. For more details, see :ref:`header-block-v1.4`.
    * - ESP32-C6 Module Programming Connector
      - The connector can be used with ESP-Prog or other UART tools to flash firmware onto the ESP32-C6 module.
    * - ESP32-C6-MINI-1 Module
@@ -100,6 +106,13 @@ The key components of the board are described in a clockwise direction.
      - The USB 2.0 Type-C Port is connected to the USB 2.0 OTG High-Speed interface of ESP32-P4, compliant with the USB 2.0 specification. When communicating with other devices via this port, ESP32-P4 acts as a USB device connecting to a USB host. Please note that USB 2.0 Type-C Port and USB 2.0 Type-A Port cannot be used simultaneously. USB 2.0 Type-C Port can also be used for powering the board.
    * - USB 2.0 Type-A Port
      - The USB 2.0 Type-A Port is connected to the USB 2.0 OTG High-Speed interface of ESP32-P4, compliant with the USB 2.0 specification. When communicating with other devices via this port, ESP32-P4 acts as a USB host, providing up to 500 mA of current. Please note that USB 2.0 Type-C Port and USB 2.0 Type-A Port cannot be used simultaneously.
+
+.. list-table::
+   :widths: 30 70
+   :header-rows: 1
+
+   * - Key Component
+     - Description
    * - Power Switch
      - Power On/Off Switch. Toggling toward the ON sign powers the board on (5 V), toggling away from the ON sign powers the board off.
    * - Switch
@@ -149,6 +162,21 @@ Optionally, the following accessories are included in the package:
 .. note::
 
   Please note that the ribbon cable in the **forward direction**, whose strips at the two ends are on the same side, should be used for the **camera**; the ribbon cable in the **reverse direction**, whose strips at the two ends are on different sides, should be used for the **LCD**.
+
+
+Application Examples
+--------------------
+
+The following application examples are available for ESP32-P4-Function-EV-Board v1.4:
+
+- :project:`ESP_Brookesia Phone <examples/esp32-p4-function-ev-board/examples/esp_brookesia_phone>` - Demonstrates an Android-like interface with multiple applications using ESP_Brookesia, utilizing MIPI-DSI, MIPI-CSI, ESP32-C6, SD card, and audio interfaces on a development board, providing a basis for efficient multimedia application development.
+- :project:`LVGL Demo v8 <examples/esp32-p4-function-ev-board/examples/lvgl_demo_v8>` - Demonstrates how to port LVGL v8 and conduct performance testing using LVGL's built-in demos on an ESP32-P4-Function-EV-Board with a 7-inch LCD screen, serving as a foundation for developing applications based on LVGL v8.
+- :project:`LVGL Demo v9 <examples/esp32-p4-function-ev-board/examples/lvgl_demo_v9>` - Demonstrates how to port LVGL v9 and conduct performance testing using LVGL's built-in demos on an ESP32-P4-Function-EV-Board, serving as a basis for developing applications based on LVGL v9.
+
+For more examples and the latest updates, please refer to the :project:`examples <examples/esp32-p4-function-ev-board>` folder.
+
+To explore the application examples or to develop your own, please follow the steps outlined in the `Start Application Development`_ section.
+
 
 Start Application Development
 ------------------------------------
@@ -213,8 +241,6 @@ Software Setup
 ^^^^^^^^^^^^^^
 
 To set up your development environment and flash an application example onto your board, please follow the instructions in `ESP-IDF Get Started <https://docs.espressif.com/projects/esp-idf/en/latest/esp32p4/get-started/index.html>`__.
-
-You can find examples for ESP32-P4-Function-EV by accessing :project:`Examples <examples/esp32-p4-function-ev-board/examples>`. To configure project options, enter ``idf.py menuconfig`` in the example directory.
 
 Hardware Reference
 ==================
@@ -344,3 +370,5 @@ For further design documentation for the board, please contact us at `sales@espr
 .. _LCD Adapter Board PCB Layout: https://dl.espressif.com/dl/schematics/esp32-p4-function-ev-board-lcd-subboard-pcb-layout.pdf
 .. _Camera Adapter Board Schematic: https://dl.espressif.com/dl/schematics/esp32-p4-function-ev-board-camera-subboard-schematics.pdf
 .. _Camera Adapter Board PCB Layout: https://dl.espressif.com/dl/schematics/esp32-p4-function-ev-board-camera-subboard-pcb-layout.pdf
+.. _Chip Revision Identification: https://docs.espressif.com/projects/esp-chip-errata/en/latest/esp32p4/01-chip-identification/index.html#
+.. _ESP32-P4 Series SoC Errata: https://docs.espressif.com/projects/esp-chip-errata/en/latest/esp32p4/index.html

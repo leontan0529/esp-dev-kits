@@ -4,6 +4,12 @@ ESP32-P4-EYE
 
 :link_to_translation:`zh_CN:[中文]`
 
+.. note::
+
+    If you are using ESP32-P4X-EYE with chip revision v3.x, please refer to this :doc:`user guide <../esp32-p4x-eye/user_guide>`.
+
+    To identify the embedded chip revision, refer to `ESP32-P4 Series SoC Errata`_ > `Chip Revision Identification`_.
+
 This user guide will help you get started with ESP32-P4-EYE and will also provide more in-depth information.
 
 ESP32-P4-EYE is a vision development board based on the ESP32-P4 chip, mainly targeting camera applications. ESP32-P4 features a dual-core RISC-V processor and supports up to 32 MB of PSRAM. In addition, ESP32-P4 supports USB 2.0 standard, MIPI-CSI/DSI, H264 Encoder, and various other peripherals. With all of its outstanding features, the board is an ideal choice for developing low-cost, high-performance, low-power network-connected audio and video products.
@@ -33,7 +39,7 @@ This guide includes the following sections:
 - `Hardware Revision Details`_: Revision history, known issues, and links to user guides for previous versions (if any) of ESP32-P4-EYE.
 - `Related Documents`_: Links to related documentation.
 
-.. _Getting-started:
+.. _Getting-started_p4_eye_0:
 
 Getting Started
 ===============
@@ -131,6 +137,19 @@ The key components of the back PCB are described in a clockwise direction. To fa
    * - Camera
      - 2 MP resolution with manually adjustable focal length. For details, refer to `Camera Datasheet`_.
 
+
+Application Examples
+--------------------
+
+The following application examples are available for ESP32-P4-EYE:
+
+- :project:`Factory Demo <examples/esp32-p4-eye/examples/factory_demo>` - Demonstrates a comprehensive mini camera application for ESP32-P4-EYE that supports photo capture, timed capture, video recording, album preview, USB SD card mounting, image parameter configuration, and AI features including face detection, pedestrian detection, and YOLOv11-nano-based object detection.
+
+For more examples and the latest updates, please refer to the :project:`examples <examples/esp32-p4-eye>` folder.
+
+To explore the application examples or to develop your own, please follow the steps outlined in the `Application Development`_ section.
+
+
 Application Development
 -----------------------
 
@@ -163,9 +182,7 @@ Software Setup
 
 To set up your development environment and flash an application example onto your board, please follow the `installation instructions <https://docs.espressif.com/projects/esp-idf/en/latest/esp32p4/get-started/index.html#installation>`__ in `ESP-IDF Get Started <https://docs.espressif.com/projects/esp-idf/en/latest/esp32p4/get-started/index.html>`__.
 
-You can find examples for ESP32-P4-EYE by accessing :project:`Examples <examples/esp32-p4-eye/examples>`. To configure project options, enter ``idf.py menuconfig`` in the example directory.
-
-.. _Hardware-reference:
+.. _Hardware-reference_p4_eye_0:
 
 Hardware Reference
 ==================
@@ -197,6 +214,7 @@ ESP32-P4-EYE can be powered using the following methods:
 
 .. figure:: ../../_static/esp32-p4-eye/pic_board_battery_label.png
    :alt: Battery Connection (click to enlarge)
+   :scale: 20%
    :figclass: align-center
 
    Battery Connection (click to enlarge)
@@ -205,31 +223,31 @@ Female Header
 -------------
 
 .. figure:: ../../_static/esp32-p4-eye/p4_board_empty_pin.png
-   :alt: Female Header (Click to Enlarge)
-   :scale: 60%
+   :alt: Female Header (click to enlarge)
+   :scale: 30%
    :figclass: align-center
 
-   Female Header (Click to Enlarge)
+   Female Header (click to enlarge)
 
 USB 2.0 Device Port Circuit
 ---------------------------
 
 .. figure:: ../../_static/esp32-p4-eye/sch_usb_high_speed.png
-   :alt: USB 2.0 Device Port Circuit (Click to Enlarge)
+   :alt: USB 2.0 Device Port Circuit (click to enlarge)
    :scale: 70%
    :figclass: align-center
 
-   USB 2.0 Device Port Circuit (Click to Enlarge)
+   USB 2.0 Device Port Circuit (click to enlarge)
 
 LCD Circuit
 -----------
 
 .. figure:: ../../_static/esp32-p4-eye/sch_interface_lcd.png
-   :alt: LCD Circuit (Click to Enlarge)
+   :alt: LCD Circuit (click to enlarge)
    :scale: 70%
    :figclass: align-center
 
-   LCD Circuit (Click to Enlarge)
+   LCD Circuit (click to enlarge)
 
 Please note that this interface supports SPI displays. ESP32-P4-EYE features the `ST7789 <https://dl.espressif.com/AE/esp-dev-kits/ST7789VW芯片手册.pdf>`_, which uses the ``LCD_BL`` pin (GPIO20) to control the backlight.
 
@@ -241,7 +259,7 @@ MicroSD Card Slot Interface Circuit
    :scale: 70%
    :figclass: align-center
 
-   MicroSD Card Slot Interface Circuit (Click to Enlarge)
+   MicroSD Card Slot Interface Circuit (click to enlarge)
 
 **Please note that the MicroSD card interface supports:**
 
@@ -252,58 +270,58 @@ Charging Circuit
 ----------------
 
 .. figure:: ../../_static/esp32-p4-eye/sch_charge_circuit.png
-   :alt: Charging Circuit (Click to Enlarge)
+   :alt: Charging Circuit (click to enlarge)
    :scale: 70%
    :figclass: align-center
 
-   Charging Circuit (Click to Enlarge)
+   Charging Circuit (click to enlarge)
 
 Microphone Circuit
 ------------------
 
 .. figure:: ../../_static/esp32-p4-eye/sch_interface_mic.png
-   :alt: Microphone Circuit (Click to Enlarge)
+   :alt: Microphone Circuit (click to enlarge)
    :scale: 100%
    :figclass: align-center
 
-   Microphone Circuit (Click to Enlarge)
+   Microphone Circuit (click to enlarge)
 
 Camera Circuit
 --------------
 
 .. figure:: ../../_static/esp32-p4-eye/sch_interface_camera.png
-   :alt: Camera Circuit (Click to Enlarge)
+   :alt: Camera Circuit (click to enlarge)
    :scale: 80%
    :figclass: align-center
 
-   Camera Circuit (Click to Enlarge)
+   Camera Circuit (click to enlarge)
 
 Rotary Encoder Circuit
 ----------------------
 
 .. figure:: ../../_static/esp32-p4-eye/sch_interface_encoder.png
-   :alt: Rotary Encoder Circuit (Click to Enlarge)
+   :alt: Rotary Encoder Circuit (click to enlarge)
    :scale: 100%
    :figclass: align-center
 
-   Rotary Encoder Circuit (Click to Enlarge)
+   Rotary Encoder Circuit (click to enlarge)
 
 ESP32-C6-MINI-1U Module Circuit
 -------------------------------
 
 .. figure:: ../../_static/esp32-p4-eye/sch_interface_esp32_c6.png
-   :alt: ESP32-C6-MINI-1U Module Circuit (Click to Enlarge)
+   :alt: ESP32-C6-MINI-1U Module Circuit (click to enlarge)
    :scale: 60%
    :figclass: align-center
 
-   ESP32-C6-MINI-1U Module Circuit (Click to Enlarge)
+   ESP32-C6-MINI-1U Module Circuit (click to enlarge)
 
 Hardware Revision Details
 =========================
 
 No previous versions available.
 
-.. _Related-documents:
+.. _Related-documents_p4_eye_0:
 
 Related Documents
 =================
@@ -325,3 +343,5 @@ Related Documents
 .. _OV2710 Overview: https://dl.espressif.com/AE/esp-dev-kits/ov2710pbv1.1web.pdf
 .. _Camera Datasheet: https://dl.espressif.com/AE/esp-dev-kits/HDF2710-47-MIPI-V2.0.pdf
 .. _Display Datasheet: https://dl.espressif.com/AE/esp-dev-kits/胶铁一体ZJY154KC-IF17.pdf
+.. _Chip Revision Identification: https://docs.espressif.com/projects/esp-chip-errata/en/latest/esp32p4/01-chip-identification/index.html#
+.. _ESP32-P4 Series SoC Errata: https://docs.espressif.com/projects/esp-chip-errata/en/latest/esp32p4/index.html

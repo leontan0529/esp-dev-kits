@@ -8,13 +8,13 @@
 
 ### 准备工作
 
-* 一块 ESP32-P4-Function-EV-Board 开发板。
+* 一块 ESP32-P4X-Function-EV-Board 开发板。
 * 一块由 [EK79007](https://dl.espressif.com/dl/schematics/display_driver_chip_EK79007AD_datasheet.pdf) 芯片驱动的 7 英寸 1024 x 600 LCD 屏幕，配有 32 针 FPC 连接 [适配板](https://dl.espressif.com/dl/schematics/esp32-p4-function-ev-board-lcd-subboard-schematics.pdf) ([LCD 规格](https://dl.espressif.com/dl/schematics/display_datasheet.pdf))。
 * 用于供电和编程的 USB-C 电缆。
 * 请参考以下步骤进行连接：
     * **步骤 1**. 根据下表，将屏幕适配板背面的引脚连接到开发板的相应引脚。
 
-        | 屏幕适配板            | ESP32-P4-Function-EV-Board |
+        | 屏幕适配板            | ESP32-P4X-Function-EV-Board |
         | -------------------- | -------------------------- |
         | 5V（任意一个）        | 5V（任意一个）              |
         | GND（任意一个）       | GND（任意一个）             |
@@ -27,8 +27,11 @@
 
 ### ESP-IDF 要求
 
-- 此示例支持 ESP-IDF release/v5.3 及以上版本。默认情况下，在 ESP-IDF release/v5.3 上运行。
-- 请参照 [ESP-IDF 编程指南](https://docs.espressif.com/projects/esp-idf/zh_CN/latest/esp32/get-started/index.html) 设置开发环境。**强烈推荐** 通过 [编译第一个工程](https://docs.espressif.com/projects/esp-idf/zh_CN/latest/esp32/get-started/index.html#id8) 来熟悉 ESP-IDF，并确保环境设置正确。
+此示例支持以下 ESP-IDF 版本：
+
+- ESP-IDF release/v5.5 及所有 Bugfix 版本
+
+请参照 [ESP-IDF 编程指南](https://docs.espressif.com/projects/esp-idf/zh_CN/latest/esp32p4/get-started/index.html) 设置开发环境。**强烈推荐** 通过 [编译第一个工程](https://docs.espressif.com/projects/esp-idf/zh_CN/latest/esp32p4/get-started/index.html#id8) 来熟悉 ESP-IDF，并确保环境设置正确。
 
 ### 获取 esp-dev-kits 仓库
 
@@ -46,6 +49,8 @@ git clone --recursive https://github.com/espressif/esp-dev-kits.git
 ```
 menuconfig > Component config > Board Support Package
 ```
+
+若使用旧芯片 ESP32-P4，请在 ``idf.py menuconfig`` 中使能 `ESP32P4_SELECTS_REV_LESS_V3`。
 
 ## 如何使用示例
 

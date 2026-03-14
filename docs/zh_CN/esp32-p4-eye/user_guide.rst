@@ -4,6 +4,12 @@ ESP32-P4-EYE
 
 :link_to_translation:`en:[English]`
 
+.. note::
+
+    若您使用的是搭载芯片版本 v3.x 的 ESP32-P4X-EYE，请参阅此 :doc:`用户指南 <../esp32-p4x-eye/user_guide>`。
+
+    要识别所使用的芯片版本，请查看 `ESP32-P4 系列芯片勘误表`_ > `芯片版本标识`_。
+
 本指南将帮助您快速上手 ESP32-P4-EYE，并提供该款开发板的详细信息。
 
 ESP32-P4-EYE 是一款基于 ESP32-P4 芯片的视觉开发板，主要面向摄像头应用。ESP32-P4 搭载双核 RISC-V 处理器，支持最大 32 MB PSRAM。此外，ESP32-P4 支持 USB 2.0 标准, MIPI-CSI/DSI, H264 Encoder 等多种外设，可满足客户对低成本、高性能、低功耗的多媒体产品的开发需求。
@@ -33,7 +39,7 @@ ESP32-P4-EYE 是一款基于 ESP32-P4 芯片的视觉开发板，主要面向摄
 - `硬件版本`_：介绍硬件历史版本和已知问题，并提供链接至历史版本开发板的入门指南（如有）。
 - `相关文档`_：列出了相关文档的链接。
 
-.. _Getting-started:
+.. _Getting-started_p4_eye_1:
 
 入门指南
 ========
@@ -131,6 +137,19 @@ ESP32-P4-EYE 是一款基于 ESP32-P4 芯片的视觉开发板，主要面向摄
    * - Camera
      - 分辨率为 200 万像素，可旋转摄像头进行手动聚焦。详细参数请参考 `摄像头规格书`_。
 
+
+应用示例
+--------
+
+以下为开发板的应用示例：
+
+- :project:`Factory Demo <examples/esp32-p4-eye/examples/factory_demo>` - 展示了一个基于 ESP32-P4-EYE 的全功能迷你相机方案。它不仅实现了拍照、定时拍照、录像、相册预览、USB SD 卡挂载和图像参数设置等基础相机功能，还集成了先进的 AI 视觉能力，包括面部检测、行人检测和基于 YOLOv11nano 模型的实时物体检测。
+
+更多示例及最新更新请参阅 :project:`examples <examples/esp32-p4-eye>` 文件夹。
+
+如需尝试应用示例或开发自定义应用，请参照 `应用程序开发`_ 小节中的步骤进行操作。
+
+
 应用程序开发
 ------------
 
@@ -163,9 +182,7 @@ ESP32-P4-EYE 是一款基于 ESP32-P4 芯片的视觉开发板，主要面向摄
 
 请前往 `快速入门 <https://docs.espressif.com/projects/esp-idf/zh_CN/latest/esp32p4/get-started/index.html>`__ 中 `详细安装步骤 <https://docs.espressif.com/projects/esp-idf/zh_CN/latest/esp32p4/get-started/index.html#get-started-how-to-get-esp-idf>`__ 一节查看如何快速设置开发环境。
 
-开发板应用示例存放在 :project:`Examples <examples/esp32-p4-eye/examples>` 中。在示例目录下输入 ``idf.py menuconfig`` 即可配置工程选项。
-
-.. _Hardware-reference:
+.. _Hardware-reference_p4_eye_1:
 
 硬件参考
 ========
@@ -197,6 +214,7 @@ ESP32-P4-EYE 的主要组件和连接方式如下图所示。
 
 .. figure:: ../../_static/esp32-p4-eye/pic_board_battery_label.png
    :alt: 电池连接图（点击放大）
+   :scale: 20%
    :figclass: align-center
 
    电池连接图（点击放大）
@@ -206,7 +224,7 @@ ESP32-P4-EYE 的主要组件和连接方式如下图所示。
 
 .. figure:: ../../_static/esp32-p4-eye/p4_board_empty_pin.png
    :alt: 排母实物图（点击放大）
-   :scale: 60%
+   :scale: 30%
    :figclass: align-center
 
    排母实物图（点击放大）
@@ -303,7 +321,7 @@ ESP32-C6-MINI-1U 模组接口
 
 该开发板为最新硬件，尚未有历史版本。
 
-.. _Related-documents:
+.. _Related-documents_p4_eye_1:
 
 相关文档
 ==========
@@ -325,3 +343,5 @@ ESP32-C6-MINI-1U 模组接口
 .. _OV2710 概述: https://dl.espressif.com/AE/esp-dev-kits/ov2710pbv1.1web.pdf
 .. _摄像头规格书: https://dl.espressif.com/AE/esp-dev-kits/HDF2710-47-MIPI-V2.0.pdf
 .. _显示屏规格书: https://dl.espressif.com/AE/esp-dev-kits/胶铁一体ZJY154KC-IF17.pdf
+.. _芯片版本标识: https://docs.espressif.com/projects/esp-chip-errata/zh_CN/latest/esp32p4/01-chip-identification/index.html#
+.. _ESP32-P4 系列芯片勘误表: https://docs.espressif.com/projects/esp-chip-errata/zh_CN/latest/esp32p4/index.html

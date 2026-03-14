@@ -7,6 +7,7 @@
 #include "ui_main.h"
 #include "device.h"
 #include "app_wifi.h"
+#include "lv_symbol_extra_def.h"
 
 /* LVGL objects defination */
 static lv_obj_t *status_bar = NULL;
@@ -128,10 +129,10 @@ void ui_status_bar_init(void)
     lv_obj_set_style_local_radius(btn_pomodoro, LV_BTN_PART_MAIN, LV_STATE_DEFAULT, 25);
     lv_obj_set_style_local_bg_color(btn_pomodoro, LV_BTN_PART_MAIN, LV_STATE_DEFAULT, COLOR_BAR);
     lv_obj_set_style_local_border_color(btn_pomodoro, LV_BTN_PART_MAIN, LV_STATE_DEFAULT, COLOR_BAR);
-    lv_obj_set_style_local_value_font(btn_pomodoro, LV_BTN_PART_MAIN, LV_STATE_DEFAULT, &font_bar_symbol);
+    lv_obj_set_style_local_value_font(btn_pomodoro, LV_BTN_PART_MAIN, LV_STATE_DEFAULT, &font_symbol_28);
     lv_obj_set_style_local_value_color(btn_pomodoro, LV_BTN_PART_MAIN, LV_STATE_DEFAULT, lv_color_hex(0xd9e1f9));
     lv_obj_set_style_local_value_str(btn_pomodoro, LV_BTN_PART_MAIN, LV_STATE_DEFAULT, LV_SYMBOL_EXTRA_HOURGLASS_HALF);
-    lv_obj_set_style_local_value_str(btn_pomodoro, LV_BTN_PART_MAIN, LV_STATE_PRESSED, LV_SYMBOL_EXTRA_HOURGLASS_HALF_SOLID);
+    lv_obj_set_style_local_value_str(btn_pomodoro, LV_BTN_PART_MAIN, LV_STATE_PRESSED, LV_SYMBOL_EXTRA_HOURGLASS_END);
     lv_obj_align(btn_pomodoro, btn_switch, LV_ALIGN_OUT_RIGHT_MID, 20, 0);
     lv_obj_set_event_cb(btn_pomodoro, btn_cb);
 
